@@ -32,20 +32,11 @@ const ImgLogo = styled.img`
   width: 50px;
 `;
 
-const LoginArea = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const ImgLogin = styled.img`
-  width: 32px;
-  height: 32px;
-`;
-
-const P = styled.p`
+const LoginButton = styled.button`
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
   font-size: 16px;
-  margin-top: 5px;
 `;
 
 const Navbar = () => {
@@ -56,10 +47,10 @@ const Navbar = () => {
                 <ImgLogo src={logoSvg} alt={'logo'}/>
                 <H1>MRDonald's</H1>
             </Logo>
-            <LoginArea>
-            <ImgLogin src={signinSvg} alt={'signin'}/>
-            <P>Login</P>
-            </LoginArea>
+            <LoginButton>
+                <img src={signinSvg} alt={'sign in'}/>
+                <p>Login</p>
+            </LoginButton>
 
         </NavBarStyled>
     );
