@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {ButtonAddItem} from "./ButtonAddItem";
 
 
 const Overlay = styled.div`
@@ -27,8 +28,23 @@ const ModalWindowBanner = styled.div`
   background-image: url(${({img}) => img});
   background-size: cover;
   background-position: center;
-  margin-bottom: 20px;
-`
+`;
+
+const ModalWindowContent = styled.section`
+  display: flex;  
+  flex-direction:column;
+  justify-content: space-between;
+  height: calc(100% - 230px);
+  padding: 20px;
+`;
+
+const HeaderContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Pacifico', cursive;
+`;
 
 
 const ItemModalWindow = ({openItem, setOpenItem}) => {
@@ -47,7 +63,15 @@ const ItemModalWindow = ({openItem, setOpenItem}) => {
         <Overlay id="overlay" onClick={closeModalWindow}>
             <ModalWindow>
                 <ModalWindowBanner img={openItem.img}/>
-                {openItem.name}
+                <ModalWindowContent>
+                    <HeaderContent>
+                        <div>{openItem.name}</div>
+                        <div>{openItem.price}</div>
+                    </HeaderContent>
+                </ModalWindowContent>
+                <ButtonAddItem>
+                    Add to cart
+                </ButtonAddItem>
             </ModalWindow>
         </Overlay>
     );
