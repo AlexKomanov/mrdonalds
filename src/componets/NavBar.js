@@ -45,7 +45,7 @@ const Navbar = () => {
         <NavBarStyled>
             <Logo>
                 <ImgLogo src={logoSvg} alt={'logo'}/>
-                <H1>MRDonald's</H1>
+                <H1>M R D O N A L D S</H1>
             </Logo>
             <LoginButton>
                 <img src={signinSvg} alt={'sign in'}/>

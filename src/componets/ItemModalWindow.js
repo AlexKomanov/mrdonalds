@@ -18,6 +18,7 @@ const Overlay = styled.div`
 
 const ModalWindow = styled.div`
   background-color: #fff;
+  top: 65px;
   width: 450px;
   height: 450px;
 `;
