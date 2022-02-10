@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {ButtonAddItem} from "./ButtonAddItem";
+import {ButtonAddItem} from "../Styled/ButtonAddItem";
 
 
 const Overlay = styled.div`
@@ -48,7 +48,7 @@ const HeaderContent = styled.div`
 `;
 
 
-const ItemModalWindow = ({openItem, setOpenItem}) => {
+const ItemModalWindow = ({openItem, setOpenItem, orders, setOrders}) => {
 
     const closeModalWindow = (e) =>{
         if (e.target.id === 'overlay') {
@@ -56,8 +56,13 @@ const ItemModalWindow = ({openItem, setOpenItem}) => {
         }
     }
 
-    if (!openItem) {
-        return null;
+    const order = {
+        ...openItem
+    };
+
+    const addToOrder = () => {
+        setOrders([...orders, order])
+        setOpenItem(null)
     }
 
     return (
@@ -70,7 +75,7 @@ const ItemModalWindow = ({openItem, setOpenItem}) => {
                         <div>{openItem.price}</div>
                     </HeaderContent>
                 </ModalWindowContent>
-                <ButtonAddItem>
+                <ButtonAddItem onClick={addToOrder}>
                     Add to cart
                 </ButtonAddItem>
             </ModalWindow>

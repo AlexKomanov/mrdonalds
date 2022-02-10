@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {ButtonAddItem} from "./ButtonAddItem";
+import {ButtonAddItem} from "../Styled/ButtonAddItem";
 import OrderListItem from "./OrderListItem";
 
 const OrderStyled = styled.section`
@@ -42,16 +42,20 @@ const TotalPrice = styled.span`
   margin-left: 20px
 `;
 
-const OrderSection = () => {
+const EmptyList = styled.p`
+  text-align: center;
+`
+
+const OrderSection = ({orders}) => {
     return (
         <OrderStyled>
             <OrderTitle>YOUR ORDER</OrderTitle>
             <OrderContent>
+                { orders.length ?
                 <OrderList>
-                    <OrderListItem/>
-                    <OrderListItem/>
-                    <OrderListItem/>
-                </OrderList>
+                    {orders.map(order => <OrderListItem order={order}/>)}
+                </OrderList> :
+                <EmptyList>The cart is empty</EmptyList>}
             </OrderContent>
             <OrderTotal>
                 <span>Total:</span>

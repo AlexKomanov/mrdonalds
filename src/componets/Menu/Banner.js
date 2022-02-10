@@ -1,4 +1,4 @@
-import bannerImg from '../image/banner.png'
+import bannerImg from '../../image/banner.png'
 import styled from "styled-components";
 
 export const Banner = styled.div`

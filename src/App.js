@@ -1,25 +1,24 @@
-import Navbar from "./componets/NavBar";
-import Menu from "./componets/Menu";
-import {GlobalStyle} from "./componets/GlobalStyle";
-import {useState} from "react";
-import ItemModalWindow from "./componets/ItemModalWindow";
-import OrderSection from "./componets/OrderSection";
-
-
-
+import Navbar from "./componets/NavBar/NavBar";
+import Menu from "./componets/Menu/Menu";
+import {GlobalStyle} from "./componets/Styled/GlobalStyle";
+import ItemModalWindow from "./componets/Modal/ItemModalWindow";
+import OrderSection from "./componets/Order/OrderSection";
+import {useOpenItem} from "./componets/Hooks/useOpenItem";
+import {useOrders} from "./componets/Hooks/useOrders";
 
 
 function App() {
 
-    const [openItem, setOpenItem] = useState(null);
+    const openItem = useOpenItem();
+    const orders = useOrders();
 
     return (
         <>
             <GlobalStyle/>
             <Navbar/>
-            <OrderSection/>
-            <Menu setOpenItem={setOpenItem}/>
-            <ItemModalWindow openItem={openItem} setOpenItem={setOpenItem}/>
+            <OrderSection {...orders}/>
+            <Menu {...openItem}/>
+            {openItem.openItem && <ItemModalWindow {...openItem} {...orders}/>}
 
         </>
     );
